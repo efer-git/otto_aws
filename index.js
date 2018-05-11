@@ -5,7 +5,7 @@ const path = require('path');
 //const request = require('request');
 
 
-exports.handler = function(event, context, callback) {
+exports.get = function(event, context, callback) {
   //let contents = fs.readFileSync(`public${path.sep}index.html`);
   console.log(checkQuery(event.query))
   let result = {
