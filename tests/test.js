@@ -15,5 +15,5 @@ describe('Tests index', function() {
         done(error);
       }
     });
-  }).timeout(5000);
+  }).timeout(90000);
 });
