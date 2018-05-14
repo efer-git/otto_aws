@@ -5,7 +5,7 @@ var index = require('../index.js');
 
 describe('Tests index', function() {
   it('verifies successful response', function(done) {
-    index.get({ "query":"PRJ20011" }, { /* context */ }, (err, result) => {
+    index.get({ /* event */ }, { /* context */ }, (err, result) => {
       try {
         test.number(result.statusCode).is(200);
         test.string(result.body).contains('Congratulations');
@@ -15,5 +15,5 @@ describe('Tests index', function() {
         done(error);
       }
     });
-  }).timeout(90000);
+  }).timeout(5000);
 });
