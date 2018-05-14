@@ -1,9 +1,10 @@
 'use strict'
 const _ = require('lodash');
 const request = require('request');
+var fs = require('fs');
+var path = require('path');
 
-
-exports.handler = (event, context, callback) => {
+exports.get = (event, context, callback) => {
   if(checkQuery(event.query)==true){
     getProject(event.query,function(val){
 		callback(null,val);
