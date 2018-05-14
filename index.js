@@ -9,7 +9,7 @@ exports.handler = (event, context, callback) => {
     getProject(event.query,function(val){
 	let result = val;
 	callback(null,result);
-    }
+    })
   //callback(null, result);
 };
 
