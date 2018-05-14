@@ -3,11 +3,11 @@ const request = require('request');
 
 
 exports.handler = (event, context, callback) => {
-  const result;
+  //const result;
   if(checkQuery(event.query)==true){
     let newdata;
     getProject(event.query,function(val){
-	result = val;
+	let result = val;
 	callback(null,result);
     }
   //callback(null, result);
