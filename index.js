@@ -7,7 +7,12 @@ var path = require('path');
 exports.get = (event, context, callback) => {
   if(checkQuery(event.query)==true){
     getProject(event.query,function(val){
-		callback(null,val);
+        let result = {
+            statusCode:200,
+            body:val.toString(),
+            headers:{'content-type':'text/json'}
+        };
+        callback(null,result);
     })
   }
   //callback(null, result);
