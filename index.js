@@ -1,15 +1,14 @@
+'use strict'
 const _ = require('lodash');
 const request = require('request');
 
 
 exports.handler = (event, context, callback) => {
-  //const result;
   if(checkQuery(event.query)==true){
-    let newdata;
     getProject(event.query,function(val){
-	let result = val;
-	callback(null,result);
+		callback(null,val);
     })
+  }
   //callback(null, result);
 };
 
@@ -40,8 +39,8 @@ function getProject(query,callback){ //return project which query(sample) contai
 					body:'q=recordset:'+key_rep.key
 				}
 
-				request.post(OPTIONS,function(err,res,result){
-					let meta=JSON.parse(result).response.docs[0]
+				request.post(OPTIONS,function(err,req,res){
+					let meta=JSON.parse(res).response.docs[0]
 					console.log(meta)
 					console.log("[INFO]\tPROJECT: "+meta.BioProject_s+"\n\tAlias: "+meta.SRA_Study_s);//+project);
 					console.log("[INFO]\tPROJECT_NAME: "+meta.project_name_s)
