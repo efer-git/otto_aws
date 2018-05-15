@@ -20,7 +20,8 @@ exports.get = (event, context, callback) => {
         statusCode:400,
         body:err.toString(),
         headers:{'content-type':'text/html'}
-        }
+        };
+    callback(null,result);
   }
     
   //callback(null, result);
