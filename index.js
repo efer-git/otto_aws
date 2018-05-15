@@ -5,7 +5,8 @@ var fs = require('fs');
 var path = require('path');
 
 exports.get = (event, context, callback) => {
-  if(checkQuery(event.query)==true){
+  event.query = event.queryStringParameters.query // AWS GATEWAY PROXY INPUT FORM
+  try{
     getProject(event.query,function(val){
         let result = {
             statusCode:200,
@@ -14,7 +15,14 @@ exports.get = (event, context, callback) => {
         };
         callback(null,result);
     })
+  }catch(err){
+    let result = {
+        statusCode:400,
+        body:err.toString(),
+        headers:{'content-type':'text/html'}
+        }
   }
+    
   //callback(null, result);
 };
 
